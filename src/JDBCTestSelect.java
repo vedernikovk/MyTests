@@ -12,7 +12,6 @@ import java.sql.SQLWarning;
 
 import org.apache.commons.io.FileUtils;
 
-
 public class JDBCTestSelect {
 
 	public static void main(String[] args) {
