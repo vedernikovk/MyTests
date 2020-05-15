@@ -1,3 +1,5 @@
+package jdbc;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +33,9 @@ public class JDBCTestSelect {
 
 	        // Get a connection to the database
 	        //Connection conn = DriverManager.getConnection( "jdbc:db2://172.16.66.12:5065/VENTYX8X", "JXK0100", "JXK0100" ) ;
-        	Connection conn = DriverManager.getConnection( "jdbc:oracle:thin:@169.254.56.200:1521:local", "d01e", "d01e" ) ;
+        	//Connection conn = DriverManager.getConnection( "jdbc:oracle:thin:@169.254.56.200:1521:local", "d01e", "d01e" ) ;
+        	Connection conn = DriverManager.getConnection( "jdbc:oracle:thin:d01e/d01e@169.254.56.200:1521:local" ) ;
+        	
             //Connection conn = DriverManager.getConnection( "jdbc:sqlserver://USATL-S-ASDEV04\\AS9MSSQL;database=AS9MSSQL1", "as9", "as9" ) ;
 	        conn.setAutoCommit(false);
 
