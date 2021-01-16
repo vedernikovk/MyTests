@@ -56,7 +56,7 @@ public class HasgMapTest {
 	}
 	
 	public static void main(String[] args) {	
-		HashMap<StringKey, Integer> theMap1 = new HashMap<>();
+		HashTable<StringKey, Integer> theMap1 = new HashTable<>();
 		
 		theMap1.put(new StringKey("a"), new Integer(1));
 		theMap1.put(new StringKey("b"), new Integer(2));
@@ -67,7 +67,7 @@ public class HasgMapTest {
 		System.out.println(numbers);
 		
 		
-		HashMap<IntegerKey, String> theMap = new HashMap<>();
+		HashTable<IntegerKey, String> theMap = new HashTable<>();
 		
 		theMap.put(new IntegerKey(1), "a");
 		theMap.put(new IntegerKey(2), "b");

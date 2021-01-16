@@ -3,12 +3,11 @@ package generics.hashmap;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HashMap<Key extends HashKey, Value> {
+public class HashTable<Key extends HashKey, Value> {
 	
 	private ArrayList<StorageItem<Value, Key>> storage = new ArrayList<>(1000);
 	
-
-	public HashMap() {
+	public HashTable() {
 		for (int i = 0; i <= 1000; i++) storage.add(null);
 	}
 
@@ -22,22 +21,6 @@ public class HashMap<Key extends HashKey, Value> {
 			this.value = value;
 			this.key = key;
 		}
-		
-		public Value getValue() {
-			return value;
-		}
-		
-		public Key getKey() {
-			return key;
-		}
-		
-		public StorageItem<Value, Key> getNext() {
-			return next;
-		}
-		
-		public void setNext(StorageItem<Value, Key> next) {
-			this.next = next;
-		}
 	}
 
 	
@@ -45,9 +28,9 @@ public class HashMap<Key extends HashKey, Value> {
 		for (StorageItem<Value, Key> storageItem : storage) {
 			if (storageItem != null) {
 				do {
-					list.add(storageItem.getValue());
+					list.add(storageItem.value);
 					
-				} while ((storageItem = storageItem.getNext()) != null);
+				} while ((storageItem = storageItem.next) != null);
 			}
 		}
 	}
@@ -56,9 +39,9 @@ public class HashMap<Key extends HashKey, Value> {
 		for (StorageItem<Value, Key> storageItem : storage) {
 			if (storageItem != null) {
 				do {
-					list.add(storageItem.getKey());
+					list.add(storageItem.key);
 					
-				} while ((storageItem = storageItem.getNext()) != null);
+				} while ((storageItem = storageItem.next) != null);
 			}
 		}		
 	}
@@ -72,11 +55,11 @@ public class HashMap<Key extends HashKey, Value> {
 			
 		} else {
 			// Collision
-			while (storageItem.getNext() != null) {
-				storageItem = storageItem.getNext();
+			while (storageItem.next != null) {
+				storageItem = storageItem.next;
 			}
 			
-			storageItem.setNext(new StorageItem<Value, Key>(key, value));
+			storageItem.next = new StorageItem<Value, Key>(key, value);
 		}
 	}
 
@@ -89,11 +72,11 @@ public class HashMap<Key extends HashKey, Value> {
 			
 		} else {
 			do {
-				if (item.getKey().isEqual(key)) {
-					return item.getValue();
+				if (item.key.isEqual(key)) {
+					return item.value;
 				}
 				
-			} while ((item = item.getNext()) != null);
+			} while ((item = item.next) != null);
 			
 			return null;
 		}		
