@@ -39,6 +39,7 @@ public class BONY {
 	}
 
 	// Number of changes to eliminate repetitive characters
+	// aabbbcccdfgqqqqqqz
 	private static int getSubsCount(String s) {
 		int subsCouner = 0;
 		char prev = s.charAt(0);
@@ -46,7 +47,7 @@ public class BONY {
 			char current = s.charAt(i);			
 			if (current == prev) {
 				subsCouner++;
-				prev = ' ';
+				prev = 0;
 			} else {
 				prev = current;
 			}
@@ -55,7 +56,7 @@ public class BONY {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getSubstrings("sdkjfsdk", 3));
+		//System.out.println(getSubstrings("sdkjfsdk", 3));
 		System.out.println(getSubsCount("aabbbcccdfgqqqz"));
 		System.out.println(getSubsCount("aabbbcccdfgqqqzz"));
 		System.out.println(getSubsCount("abbbcccdfgqqqzz"));

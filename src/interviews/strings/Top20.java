@@ -408,6 +408,17 @@ public class Top20 {
 		
 		return true;
 	}
+
+	private static Set<Character> toSet2(String s) {
+		String[] arrs = s.split("");
+		
+		List<Character> chars = Arrays.stream(arrs).map(e -> e.charAt(0)).collect(java.util.stream.Collectors.toList());
+		
+		Set<Character> result = new HashSet<Character>(chars);
+		
+		return result;
+	}
+
 	
 	public static void main(String[] args) {
 		//System.out.print(checkAnagram("word", "wrdo"));
@@ -441,6 +452,7 @@ public class Top20 {
 		// System.out.println(indexOf("qwerty", "ty"));
 		// System.out.println(indexOf("qwerty", "abc"));
 		// System.out.println(longestSubstring("araaci", 2));
-		System.out.println(isValidShuffle("abc", "def", "dabecf"));		
+		// System.out.println(isValidShuffle("abc", "def", "dabecf"));
+		System.out.println(toSet2("dabecf"));
 	}
 }
