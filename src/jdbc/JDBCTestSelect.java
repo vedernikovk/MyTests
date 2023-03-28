@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 
 public class JDBCTestSelect {
 
@@ -57,7 +57,7 @@ public class JDBCTestSelect {
 	         ResultSet rs = stmt.executeQuery();
              if (rs.next()) {
             	 String XML = readClob(rs.getClob("XML_DOCUMENT"));
-            	 FileUtils.write(new File("message.xml"), XML, Charset.forName("UTF-8")); 
+            	 //FileUtils.write(new File("message.xml"), XML, Charset.forName("UTF-8"));
              }
 
 	         // Close the result set, statement and the connection
