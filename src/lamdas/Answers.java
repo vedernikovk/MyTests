@@ -6,12 +6,17 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.insightfullogic.java8.examples.chapter1.Album;
 import com.insightfullogic.java8.examples.chapter1.Artist;
+import com.insightfullogic.java8.examples.chapter1.Dish;
+
 import static com.insightfullogic.java8.examples.chapter1.SampleData.*;
+import static java.util.stream.Collectors.groupingBy;
 
 public class Answers {
 	
@@ -53,7 +58,7 @@ public class Answers {
 	 }
 	
 	 public static Map<String, Long> countWords(Stream<String> names) {
-		 return names.collect(Collectors.groupingBy(name -> name, Collectors.counting()));
+		 return names.collect(groupingBy(name -> name, Collectors.counting()));
 	 }
 	 
 	 public static String longestName(Stream<String> names) {
@@ -76,5 +81,22 @@ public class Answers {
 		System.out.println("Words: " + countWords(Stream.of("John", "Paul", "George", "John", "Paul", "John")));
 		
 		System.out.println("Longest name: " + longestName(Stream.of("John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr", "Pete Best", "Stuart Sutcliffe")));
+
+		Map<Dish.Type, List<Dish>> dishesByType =
+				 menu.stream().collect(groupingBy(d -> d.getType()/*Dish::getType*/));
+		System.out.println(dishesByType);
+
+
+		 Supplier<String> i = () -> "Car";
+		 Consumer<String> c = x -> {
+			 System.out.print(x.toLowerCase());
+		 };
+		 Consumer<String> d = x -> {
+			 System.out.print(x.toUpperCase());
+		 };
+		 Consumer<String> a = c.andThen(d);
+		 a.accept(i.get());
+		 System.out.println();
 	 }
 }
+
